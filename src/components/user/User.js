@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 
+class User extends Component{
 
-const User = () => {
+    render(){
     return (
         <div className="flex justify-center h-center">           
             <div className="border-2 relative border-gray-800 w-px5 rounded my-16">
@@ -14,7 +15,7 @@ const User = () => {
                        <h2><p className="font-bold text-white">Edit Profile</p></h2>
                    </div>
                </div>
-               <h2 className="mt-4 ml-8"><p className="font-bold">Nama</p></h2>
+               <h2 className="mt-4 ml-8"><p className="font-bold">ike</p></h2>
                <div className="flex mb-12">
                 <img src={require("../../assets/image/user/calendar.svg")} className="h-8 w-8 ml-8 mt-6" alt="" />
                 <p className="mt-6 ml-5">12 Januari 2020</p>
@@ -175,6 +176,7 @@ const User = () => {
             </div>
         </div>
     )
+    }
 }
 
 export default User;

@@ -1,11 +1,36 @@
-import React, { useState }  from 'react';
+import React, { Component }  from 'react';
 import {Link} from 'react-router-dom';
 
-function Categories(){
+class Categories extends Component{
 
-    const [isOpen, setIsOpen] = useState(false);
+    constructor(){
+        super();
 
+        this.state = {
+            showMenu: false,
+        };
+        this.showMenu = this.showMenu.bind(this);
+        this.closeMenu = this.closeMenu.bind(this);
+    }
 
+    showMenu(event){
+        event.preventDefault();
+
+        this.setState({showMenu: true},() =>{
+            document.addEventListener('click', this.closeMenu);
+        });
+    }   
+
+    closeMenu(event){
+        if(!this.dropdownMenu.contains(event.target)){
+            this.setState({
+                showMenu: false},() =>{
+                    document.removeEventListener('click', this.closeMenu);
+                });
+        }
+    }
+
+    render(){
     return (
         <div>
             <div className="border-none w-full p-5 bg-gradient-r-red-pink mb-16">
@@ -97,32 +122,32 @@ function Categories(){
                 <h2 className="text-2xl"><p className="font-bold text-white">Kenapa Harus Memulai Karya Menulis</p></h2>
                 </div>
                 <div className="flex justify-center">
-                    <div class="md:flex bg-white rounded-lg p-6 w-px2 mt-8 ml-16">
+                    <div className="md:flex bg-white rounded-lg p-6 w-px2 mt-8 ml-16">
                         <img className="w-16 h-16 rounded-full mx-auto" src={require("../../assets/image/home/holmes.jpg")} alt=""/>
-                        <div class="text-center md:text-left">
-                        <h2 class="text-lg">Erin Lindford</h2>
-                        <div class="text-purple-500">Customer Support</div>
-                        <div class="text-gray-600">erinlindford@example.com</div>
-                        <div class="text-gray-600">(555) 765-4321</div>
+                        <div className="text-center md:text-left">
+                        <h2 className="text-lg">Erin Lindford</h2>
+                        <div className="text-purple-500">Customer Support</div>
+                        <div className="text-gray-600">erinlindford@example.com</div>
+                        <div className="text-gray-600">(555) 765-4321</div>
                         </div>
                     </div>
-                    <div class="md:flex bg-white rounded-lg p-6 w-px2 mt-8 ml-8">
+                    <div className="md:flex bg-white rounded-lg p-6 w-px2 mt-8 ml-8">
                         <img className="w-16 h-16 rounded-full mx-auto" src={require("../../assets/image/home/holmes.jpg")} alt=""/>
-                        <div class="text-center md:text-left">
-                        <h2 class="text-lg">Erin Lindford</h2>
-                        <div class="text-purple-500">Customer Support</div>
-                        <div class="text-gray-600">erinlindford@example.com</div>
-                        <div class="text-gray-600">(555) 765-4321</div>
+                        <div className="text-center md:text-left">
+                        <h2 className="text-lg">Erin Lindford</h2>
+                        <div className="text-purple-500">Customer Support</div>
+                        <div className="text-gray-600">erinlindford@example.com</div>
+                        <div className="text-gray-600">(555) 765-4321</div>
                         </div>
                     </div>
                     
-                    <div class="md:flex bg-white rounded-lg p-6 w-px2 mt-8 ml-8">
+                    <div className="md:flex bg-white rounded-lg p-6 w-px2 mt-8 ml-8">
                         <img className="w-16 h-16 rounded-full mx-auto" src={require("../../assets/image/home/holmes.jpg")} alt=""/>
-                        <div class="text-center md:text-left">
-                        <h2 class="text-lg">Erin Lindford</h2>
-                        <div class="text-purple-500">Customer Support</div>
-                        <div class="text-gray-600">erinlindford@example.com</div>
-                        <div class="text-gray-600">(555) 765-4321</div>
+                        <div className="text-center md:text-left">
+                        <h2 className="text-lg">Erin Lindford</h2>
+                        <div className="text-purple-500">Customer Support</div>
+                        <div className="text-gray-600">erinlindford@example.com</div>
+                        <div className="text-gray-600">(555) 765-4321</div>
                         </div>
                     </div>
                     </div>
@@ -135,26 +160,34 @@ function Categories(){
                     <div className="flex">
                         <div className="inline-block">
                             <span className="rounded-md shadow-sm">
-                                <button onClick={() => setIsOpen(!isOpen)} type="submit" className="border-none bg-white hover:bg-gray-200 font-bold text-black rounded pl-6 pr-12 py-2 relative mr-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
+                                <button onClick={this.showMenu} type="submit" className="border-none bg-white hover:bg-gray-200 font-bold text-black rounded pl-6 pr-12 py-2 relative mr-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
                                     Filter
-                                <img src={require("../../assets/image/categories/filter.svg")} className="h-8 w-8 absolute top-0 right-0 mt-2 mr-2" alt=""/>
+                                <img src={require("../../assets/image/categories/filter.svg")} className="h-8 w-8 absolute top-0 right-0 mt-1 mr-2" alt=""/>
                                 </button>
                             </span>
-                            <div className="origin-top-right absolute right-1 mt-2 w-56 rounded-md shadow-lg">
-                                <div className="rounded-md bg-white shadow-xs">
-                                    <div className="py-1" >
-                                        <Link href="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 transition duration-150 ease-in-out">Account settings</Link>
-                                        <Link href="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 transition duration-150 ease-in-out">Support</Link>
-                                        <Link href="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 transition duration-150 ease-in-out">License</Link>
+                            {this.state.showMenu ? ( 
+                                <div ref={(element) => {
+                                    this.dropdownMenu = element;
+                                }} className="origin-top-right absolute right-1 mt-2 w-56 rounded-md shadow-lg">
+                                    <div className="rounded-md bg-white shadow-xs">
+                                        <div className="py-1" >
+                                            <Link href="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 transition duration-150 ease-in-out">Account settings</Link>
+                                            <Link href="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 transition duration-150 ease-in-out">Support</Link>
+                                            <Link href="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 transition duration-150 ease-in-out">License</Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                ): (
+                                    null
+                                )
+                            }
                         </div>
-                        
-                        <button type="submit" className="border-none bg-white hover:bg-gray-200 font-bold text-black rounded pl-6 pr-12 py-2 relative">
-                            Like
-                        <img src={require("../../assets/image/categories/filter.svg")} className="h-8 w-8 absolute top-0 right-0 mt-2 mr-2" alt=""/>
-                        </button>
+                        <div>
+                            <button onClick={this.showMenu} type="submit" className="border-none bg-white hover:bg-gray-200 font-bold text-black rounded pl-6 pr-12 py-2 relative">
+                                Like
+                            <img src={require("../../assets/image/categories/heart.svg")} className="h-8 w-8 absolute top-0 right-0 mt-1 mr-2" alt=""/>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div className="border p-5 w-full h-32 mt-5">
@@ -389,10 +422,35 @@ function Categories(){
                         
                     </div>
                </div>
+               <div className="flex border-t-2 my-6">
+                    <div className="flex-1 mt-4 left-0">
+                        <div className="flex">
+                            <img src={require("../../assets/image/categories/back.svg")} className="h-6 w-6" alt=""/>
+                            <p className="font-sans text-md ml-2">Kembali</p>
+                        </div>
+                    </div>
+                    <div className="flex-1 mt-4">
+                        <div className="flex">
+                            <p>1</p>
+                            <p>1</p>
+                            <p>1</p>
+                            <p>1</p>
+                            <p>1</p>
+                        </div>
+                    </div>
+                    <div className="flex mt-4 right-0 top-0">
+                        <p className="font-sans text-md mr-2">Selanjutnya</p>
+                        <img src={require("../../assets/image/categories/next.svg")} className="h-6 w-6" alt=""/>
+                    </div>
+               </div>
             </div>
+
         </div>
+
         </div>
     );
+    }
+
 }
 
 export default Categories;
