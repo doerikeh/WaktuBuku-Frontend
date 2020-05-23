@@ -1,25 +1,46 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { getUsers } from '../../actions/auth';
+import { connect } from 'react-redux';
+
 
 class User extends Component{
+
+    componentDidMount() {
+        this.props.getUsers();
+      }
 
     render(){
     return (
         <div className="flex justify-center h-center">           
             <div className="border-2 relative border-gray-800 w-px5 rounded my-16">
-                <div clas>
-                    <img src={require("../../assets/image/home/deep_learning.jpeg")} className="" alt="" />
-                </div>
-               <img src={require("../../assets/image/home/holmes.jpg")} className="rounded-full h-40 w-40 absolute top-12 ml-8 left-0" alt="" />
-               <div className="flex justify-end mt-8 mr-20">
-                   <div className="border rounded-full bg-blue-900 p-3">
-                       <h2><p className="font-bold text-white">Edit Profile</p></h2>
-                   </div>
+            {this.props.auth.map(users => (
+                <div className='item' key={users.id}>
+                    <div className="">
+                        <img src={require("../../assets/image/home/deep_learning.jpeg")} className="" alt="" />
+                    </div>
+                    <img src={require("../../assets/image/home/holmes.jpg")} className="rounded-full h-40 w-40 absolute top-12 ml-8 left-0" alt="" />
+                    <div className="flex justify-end mt-8 mr-20">
+                            <Link to="/user/edit">
+                                <div className="border rounded-full bg-blue-900 p-3">
+                                    <h2><p className="font-bold text-white">Edit Profile</p></h2>
+                                </div>
+                            </Link>
+                    </div>
+                    <h2 className="mt-4 ml-8"><p className="font-bold">{users.username_user}</p></h2>
+                    <div className="flex mb-12">
+                            <img src={require("../../assets/image/user/calendar.svg")} className="h-8 w-8 ml-8 mt-6" alt="" />
+                            <p className="mt-6 ml-5">{users.date_updated}</p>
+                    </div>
+                    <p>{users.email}</p>
+                    <p>{users.alamat}</p>
+                    <p>{users.gender}</p>
+                    <p>{users.biografi}</p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
                </div>
-               <h2 className="mt-4 ml-8"><p className="font-bold">ike</p></h2>
-               <div className="flex mb-12">
-                <img src={require("../../assets/image/user/calendar.svg")} className="h-8 w-8 ml-8 mt-6" alt="" />
-                <p className="mt-6 ml-5">12 Januari 2020</p>
-               </div>
+               ))}
                <div className="flex">
                 <h2 className="ml-20 mb-4"><p className="font-bold text-blue-600 text-2xl">Cerita</p></h2>
                 <h2 className="mx-20 mb-4"><p className="text-2xl">Like</p></h2>
@@ -175,8 +196,14 @@ class User extends Component{
                </div>
             </div>
         </div>
-    )
+    );
     }
 }
 
-export default User;
+
+const mapStateToProps = (state) => ({
+    auth: Object.values(state.auth)
+});
+
+export default connect(mapStateToProps, {getUsers})(User);
+  
