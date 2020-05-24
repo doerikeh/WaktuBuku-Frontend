@@ -32,13 +32,6 @@ class User extends Component{
                             <img src={require("../../assets/image/user/calendar.svg")} className="h-8 w-8 ml-8 mt-6" alt="" />
                             <p className="mt-6 ml-5">{users.date_updated}</p>
                     </div>
-                    <p>{users.email}</p>
-                    <p>{users.alamat}</p>
-                    <p>{users.gender}</p>
-                    <p>{users.biografi}</p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
                </div>
                ))}
                <div className="flex">
