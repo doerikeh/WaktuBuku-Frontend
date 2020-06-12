@@ -10,6 +10,8 @@ import Navbar from "./components/layout/header/Navbar";
 import Footer from './components/layout/footer/Footer';
 import Register from './components/auth/register/Register';
 import Login from './components/auth/login/Login';
+import EditUser from './components/user/layout/EditUser';
+
 import { Provider } from 'react-redux';
 import store from './store';
 import { Router , Route, Switch } from 'react-router-dom';
@@ -36,6 +38,7 @@ class App extends Component {
                       <PrivateRoute exact path="/" component={Home}/>
                       <Route exact path="/user" component={User}></Route>
                       <Route exact path="/register" component={Register}></Route>
+                      <Route exact path="/user/edit" component={EditUser}></Route>
                       <Route exact path="/login" component={Login}></Route>
                       <Route exact path="/categories" component={Categories}></Route>
                 </Switch>

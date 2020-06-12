@@ -2,14 +2,10 @@ import _ from 'lodash';
 
 import React ,{ Component }  from 'react';
 import {connect} from 'react-redux';
-import {getUser, editUser} from '../../../actions/auth';
+import {editUser} from '../../../actions/user';
 import ProfileForm from './ProfileForm';
 
 class ProfileEdit extends Component{
-
-    componentDidMount(){
-        this.props.getUser(this.props.params.id);
-    }
 
     onSubmit = formValues => {
         this.props.editUser(this.props.match.params.id, formValues);
@@ -60,5 +56,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(
     mapStateToProps,
-    {getUser, editUser}
+    {editUser}
 )(ProfileEdit);

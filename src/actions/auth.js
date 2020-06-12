@@ -17,10 +17,11 @@ export const loadUser = () => async (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   try {
-    const res = await axios.get('http://127.0.0.1:8000/api/auth/user/', tokenConfig(getState));
+    const res = await axios.get('http://127.0.0.1:8000/api/user/', tokenConfig(getState));
     dispatch({
       type: USER_LOADED,
       payload: res.data
+      
     });
   } catch (err) {
     dispatch({
@@ -28,6 +29,8 @@ export const loadUser = () => async (dispatch, getState) => {
     });
   }
 };
+
+
 
 // REGISTER USER
 export const register = ({ email, username_user ,password }) => async dispatch => {

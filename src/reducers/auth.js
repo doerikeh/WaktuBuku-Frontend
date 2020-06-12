@@ -6,8 +6,11 @@ import {
     REGISTER_FAIL,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT_SUCCESS
+    LOGOUT_SUCCESS,
 } from '../actions/types';
+
+
+
 
 const initialState = {
 isLoading: false,

@@ -48,7 +48,8 @@ class Navbar extends Component {
         );
     return(
         <div>
-            <nav className="flex items-center justify-between flex-wrap bg-indigo_blue-900 p-6 ">
+            <header id="header">
+            <div className="flex items-center justify-between flex-wrap bg-indigo_blue-900 p-6 ">
                 <div className="flex-1">
                     <div className="flex">
                         <h2 className="ml-16 font-bold text-white text-2xl"><Link to='/'>Waktubuku</Link></h2>
@@ -72,10 +73,11 @@ class Navbar extends Component {
                     <div className="flex">
                     {isAuthenticated ? userLinks : guestLinks}
                     
-                    </div>
+                    </div>  
 
                 </div>
-            </nav>
+            </div>
+            </header>
         </div>
     );
     }
