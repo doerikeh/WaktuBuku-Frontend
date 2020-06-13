@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import auth from './auth';
 import user from './user';
+import cerita from './cerita'
 import { LOGOUT_SUCCESS } from '../actions/types';
 
 // export default combineReducers({
@@ -13,7 +14,8 @@ import { LOGOUT_SUCCESS } from '../actions/types';
 const appReducer = combineReducers({
   form: formReducer,
   auth,
-  user
+  user,
+  cerita
 });
 
 const rootReducer = (state, action) => {

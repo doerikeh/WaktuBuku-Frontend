@@ -1,11 +1,16 @@
-import _ from 'lodash';
 
 import React ,{ Component }  from 'react';
 import {connect} from 'react-redux';
-import {editUser} from '../../../actions/user';
+import {editUser, getUsers} from '../../../actions/user';
 import ProfileForm from './ProfileForm';
+import _ from 'lodash';
+
 
 class ProfileEdit extends Component{
+
+    componentDidMount(){
+        this.props.getUsers(this.props.match.params.id);
+    }
 
     onSubmit = formValues => {
         this.props.editUser(this.props.match.params.id, formValues);
@@ -40,9 +45,9 @@ class ProfileEdit extends Component{
                             <h2 className="mt-4"><p className="font-bold text-blue-800 text-xl">Change Profile Image</p></h2>
                         </div>
                     </div>
-                    <div>
-                        <ProfileForm initialValues={_.pick(this.props.user, "profile")} enableReinitialize={true} onSubmit={this.onSubmit} />
-                    </div>
+                        <ProfileForm initialValues={_.pick(this.props.user, 'user')}
+                        enableReinitialize={true}
+                        onSubmit={this.onSubmit}/>
                 </div>
             </div>
             </div>
@@ -56,5 +61,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(
     mapStateToProps,
-    {editUser}
+    {editUser, getUsers}
 )(ProfileEdit);

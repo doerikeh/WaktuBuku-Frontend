@@ -25,27 +25,26 @@ export class UserDetail extends Component {
             <div>
                 <div className='item'>
                 {this.props.user.map(user => (
-                <div className="" key={user.id}>
-                    <div className="">
-                        <img src={require("../../assets/image/home/deep_learning.jpeg")} className="" alt="" />
+                    <div className="" key={user.id}>
+                        <div className="">
+                            <img src={user.image_walpaper} className="w-full h-px11" alt="" />
+                        </div>
+                        <img src={user.image_profile} className="rounded-full h-40 w-40 absolute top-12 ml-8 left-0" alt="" />
+                        {EditUser}
+                        <h2 className="mt-4 ml-8"><p className="font-bold">{user.username_user}</p></h2>
+                        <div className="flex mb-12">
+                                <img src={require("../../assets/image/user/calendar.svg")} className="h-8 w-8 ml-8 mt-6" alt="" />
+                                <p className="mt-6 ml-5">{user.date_updated}</p>
+                        </div>  
                     </div>
-                    <img src={require("../../assets/image/home/holmes.jpg")} className="rounded-full h-40 w-40 absolute top-12 ml-8 left-0" alt="" />
-                    {EditUser}
-                    <h2 className="mt-4 ml-8"><p className="font-bold">{user.username_user}</p></h2>
-                    <div className="flex mb-12">
-                            <img src={require("../../assets/image/user/calendar.svg")} className="h-8 w-8 ml-8 mt-6" alt="" />
-                            <p className="mt-6 ml-5">{user.date_updated}</p>
-                    </div>  
-                </div>
                     
-            ))};
+                ))}
                 <div className="flex">
                 <h2 className="ml-20 mb-4"><p className="font-bold text-blue-600 text-2xl">Cerita</p></h2>
                 <h2 className="mx-20 mb-4"><p className="text-2xl">Like</p></h2>
                 <h2 className="mr-20 mb-4"><p className="text-2xl">Favorit Cerita</p></h2>
                 <h2 className="mr-20 mb-4"><p className="text-2xl">Mengikuti</p></h2>
                </div>
-               <UserStoryList/>
 
             </div>
             </div>

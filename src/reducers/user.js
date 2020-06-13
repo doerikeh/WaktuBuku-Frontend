@@ -15,7 +15,11 @@ export default function(state = {}, action) {
                 user: action.payload
             };
         case EDIT_USER:
-            default:
-            return state;
-    }
+            return {
+                ...state,
+                [action.payload.id]: action.payload
+            };
+        default:
+            return state
+    }   
 };

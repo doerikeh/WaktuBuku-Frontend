@@ -95,7 +95,15 @@ const minLength = min => value =>
     ? `Must be at least ${min} characters`
     : undefined;
 
-const minLength3 = minLength(3);
+const minLength3 = minLength(3);const validate = formValues => {
+  const errors = {};
+
+  if (!formValues.task) {
+    errors.task = 'Please enter at least 1 character';
+  }
+
+  return errors;
+};
 
 const maxLength = max => value =>
   value && value.length > max ? `Must be ${max} characters or less` : undefined;
